@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+[RequireComponent(typeof(InputHandler), typeof(PlayerAudio), 
+    typeof(PlayerCamera))]
+[RequireComponent(typeof(PlayerAudio))]
 public class PlayerController : MonoBehaviour
 {
     [Header("References")] 
     public PlayerCamera _camera;
     private PlayerAudio _audio;
-    private PlayerGrounding _grounding;
+    private PlayerCollisions _collisions;
     private CharacterController _controller;
     
 
@@ -50,6 +52,10 @@ public class PlayerController : MonoBehaviour
             float speedModifier = isSprinting ? sprintSpeedModifier : 1f;
 
             Vector3 worldSpaceMoveInput = transform.TransformVector(_inputHandler.GetMoveInput());
+            if (_collisions.isGrounded)
+            {
+                
+            }
         }
     }
 
@@ -63,9 +69,9 @@ public class PlayerController : MonoBehaviour
         {
             if (!ignoreObstructions)
             {
-                Collider[] standingOverlaps = Physics.OverlapCapsule(_grounding.GetCapsuleBottomHemisphere(), 
-                    _grounding.GetCapsuleTopHemisphere(capsuleHeightStanding), _grounding.checkRadius,
-                    _grounding.ground, QueryTriggerInteraction.Ignore);
+                Collider[] standingOverlaps = Physics.OverlapCapsule(_collisions.GetCapsuleBottomHemisphere(), 
+                    _collisions.GetCapsuleTopHemisphere(capsuleHeightStanding), _collisions.checkRadius,
+                    _collisions.ground, QueryTriggerInteraction.Ignore);
                 foreach (Collider c in standingOverlaps)
                 {
                     if (c != _controller)

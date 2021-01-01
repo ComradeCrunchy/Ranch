@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
-public class PlayerGrounding : MonoBehaviour
+public class PlayerCollisions : MonoBehaviour
 {
     public bool isGrounded;
     public LayerMask ground;
@@ -17,6 +17,11 @@ public class PlayerGrounding : MonoBehaviour
     private const float k_JumpGroundingPreventionTime = 0.2f;
 
     private void Update()
+    {
+        Grounding();
+    }
+
+    private void Grounding()
     {
         float groundcheckRadius = isGrounded ? (m_Controller.skinWidth + checkRadius) : k_GroundCheckDistanceInAir;
         m_GroundNormal = Vector3.up;
