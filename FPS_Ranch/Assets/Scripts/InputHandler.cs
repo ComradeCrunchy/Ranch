@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,13 @@ public class InputHandler : MonoBehaviour
     private GameManager _gameManager;
     public bool invertYaxis;
     private float lookSensitivity = 2f;
+
+    public void Start()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     public float GetLookInputsHorizontal()
     {
@@ -58,12 +66,32 @@ public class InputHandler : MonoBehaviour
     {
         if (CanProcessInput())
         {
-            Vector3 move = new Vector3(Input.GetAxisRaw(GameConstants.k_MouseAxisNameHorizontal), 0f,
+            Vector3 move = new Vector3(Input.GetAxisRaw(GameConstants.k_AxisNameHorizontal), 0f,
                 Input.GetAxisRaw(GameConstants.k_AxisNameVertical));
             move = Vector3.ClampMagnitude(move, 1);
 
             return move;
         }
         return Vector3.zero;
+    }
+
+    public bool GetJumpInputDown()
+    {
+        if (CanProcessInput())
+        {
+            return Input.GetButton(GameConstants.k_ButtonNameJump);
+        }
+
+        return false;
+    }
+
+    public bool GetCrouchedInputDown()
+    {
+        if (CanProcessInput())
+        {
+            return Input.GetButtonDown(GameConstants.k_ButtonNameCrouch);
+        }
+
+        return false;
     }
 }

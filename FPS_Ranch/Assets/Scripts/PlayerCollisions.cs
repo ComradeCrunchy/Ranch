@@ -16,12 +16,12 @@ public class PlayerCollisions : MonoBehaviour
 
     private const float k_JumpGroundingPreventionTime = 0.2f;
 
-    private void Update()
+    private void Start()
     {
-        Grounding();
+        m_Controller = GetComponent<CharacterController>();
     }
 
-    private void Grounding()
+    public void Grounding()
     {
         float groundcheckRadius = isGrounded ? (m_Controller.skinWidth + checkRadius) : k_GroundCheckDistanceInAir;
         m_GroundNormal = Vector3.up;
