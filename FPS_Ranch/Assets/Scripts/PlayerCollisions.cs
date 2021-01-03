@@ -5,13 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerCollisions : MonoBehaviour
 {
-    public bool isGrounded;
-    public LayerMask ground;
+    public bool isGrounded { get; private set; }
+    public LayerMask ground = -1;
     public Transform groundCheck;
-    public float checkRadius = 0.05f;
+    public float groundCheckDistance = 0.05f;
     public Vector3 m_GroundNormal;
     private CharacterController m_Controller;
-    private float k_GroundCheckDistanceInAir;
+    const float k_GroundCheckDistanceInAir = 0.7f;
     private float m_lastTimeJumped = 0f;
 
     private const float k_JumpGroundingPreventionTime = 0.2f;
@@ -23,17 +23,18 @@ public class PlayerCollisions : MonoBehaviour
 
     public void Grounding()
     {
-        float groundcheckRadius = isGrounded ? (m_Controller.skinWidth + checkRadius) : k_GroundCheckDistanceInAir;
+        float groundcheckRadius = isGrounded ? (m_Controller.skinWidth + groundCheckDistance) : k_GroundCheckDistanceInAir;
+        
+        isGrounded = false;
         m_GroundNormal = Vector3.up;
-        if (Physics.CapsuleCast(GetCapsuleBottomHemisphere(), GetCapsuleTopHemisphere(m_Controller.height),
-            m_Controller.radius, Vector3.down, out RaycastHit hit, groundcheckRadius, ground,
-            QueryTriggerInteraction.Ignore))
+        
+        if(Time.time >= m_lastTimeJumped+ k_JumpGroundingPreventionTime)
         {
-            if (Time.time >= m_lastTimeJumped + k_JumpGroundingPreventionTime)
+            if (Physics.CapsuleCast(GetCapsuleBottomHemisphere(), GetCapsuleTopHemisphere(m_Controller.height),
+                m_Controller.radius, Vector3.down, out RaycastHit hit, groundcheckRadius, ground,
+                QueryTriggerInteraction.Ignore))
             {
-                if (isGrounded)
-                {
-                    m_GroundNormal = hit.normal;
+                m_GroundNormal = hit.normal;
 
                     if (Vector2.Dot(hit.normal, transform.up) > 0f &&
                         IsNormalUnderSlopeLimit(m_GroundNormal))
@@ -44,7 +45,7 @@ public class PlayerCollisions : MonoBehaviour
                             m_Controller.Move(Vector3.down * hit.distance);
                         }
                     }
-                }
+                
             }
         }
     }
@@ -66,6 +67,6 @@ public class PlayerCollisions : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckDistance);
     }
 }

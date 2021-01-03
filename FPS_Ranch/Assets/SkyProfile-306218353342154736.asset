@@ -56,7 +56,7 @@ Material:
     - _HorizonCloudSize: 4.91
     - _HorizonCloudStart: -0.1
     - _HorizonCloudStep: 25
-    - _HorizonExponent: 4.3194885
+    - _HorizonExponent: 4.578182
     - _HorizonStep: 500
     - _HorizonThickness: 1
     - _MoonGlow: 0
@@ -75,7 +75,7 @@ Material:
     - _StarsGlow0: 0.01
     - _StarsGlow1: 0.01
     - _StarsGlow2: 0.01
-    - _StarsOpacity: 0.80380327
+    - _StarsOpacity: 0
     - _StarsSize0: 0.42
     - _StarsSize1: 0.53
     - _StarsSize2: 0.46
@@ -88,18 +88,18 @@ Material:
     - _SunSoftEdge: 0.5
     m_Colors:
     - _DetailOverlayColor: {r: 0, g: 0, b: 0, a: 0}
-    - _GroundColor: {r: 0.32064885, g: 0.2798777, b: 0.35884947, a: 1}
+    - _GroundColor: {r: 0.46223778, g: 0.45365345, b: 0.4702809, a: 1}
     - _HorizonCloudColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HorizonColor: {r: 0.4159287, g: 0.36391956, b: 0.5471698, a: 1}
-    - _MoonColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HorizonColor: {r: 0.8827827, g: 0.92155385, b: 0.8745559, a: 1}
+    - _MoonColor: {r: 1, g: 1, b: 1, a: 0}
     - _MoonDirection: {r: 0, g: 0, b: 1, a: 0}
-    - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.1446197}
-    - _SkyColor: {r: 0.08056989, g: 0.03172837, b: 0.21698111, a: 1}
+    - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.40195584}
+    - _SkyColor: {r: 0.29959303, g: 0.59786355, b: 0.86870974, a: 1}
     - _StarsColor0: {r: 0.96470594, g: 0.9450981, b: 0.76470596, a: 1}
     - _StarsColor1: {r: 1, g: 0.5294118, b: 0.93725497, a: 1}
     - _StarsColor2: {r: 0, g: 0.92549026, b: 1, a: 1}
-    - _SunColor: {r: 0.9925499, g: 0.9802569, b: 0.9599734, a: 0}
-    - _SunDirection: {r: 0, g: 0.8626823, b: 0.50574625, a: 0}
+    - _SunColor: {r: 0.9716981, g: 0.92380583, b: 0.84407306, a: 1}
+    - _SunDirection: {r: 0, g: -0.8526401, b: 0.5224987, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -113,18 +113,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5278d11d9502245b5cc174a196561b, type: 3}
   m_Name: SkyProfile-306218353342154736
   m_EditorClassIdentifier: 
-  skyColor: {r: 0.08056989, g: 0.03172837, b: 0.21698111, a: 1}
-  horizonColor: {r: 0.4159287, g: 0.36391956, b: 0.5471698, a: 1}
-  groundColor: {r: 0.32064885, g: 0.2798777, b: 0.35884947, a: 1}
+  skyColor: {r: 0.29959303, g: 0.59786355, b: 0.86870974, a: 1}
+  horizonColor: {r: 0.8827827, g: 0.92155385, b: 0.8745559, a: 1}
+  groundColor: {r: 0.46223778, g: 0.45365345, b: 0.4702809, a: 1}
   horizonThickness: 1
-  horizonExponent: 4.3194885
+  horizonExponent: 4.578182
   horizonStep: 500
   fogSyncOption: 2
   fogColor: {r: 0, g: 0, b: 0, a: 0}
   enableStars: 1
   starsStartPosition: -0.01
   starsEndPosition: 0
-  starsOpacity: 0.80380327
+  starsOpacity: 0
   starsLayerCount: 1
   starsColor0: {r: 0.96470594, g: 0.9450981, b: 0.76470596, a: 1}
   starsColor1: {r: 1, g: 0.5294118, b: 0.93725497, a: 1}
@@ -146,24 +146,24 @@ MonoBehaviour:
   starsTwinkleMap: {fileID: 0}
   enableSun: 1
   sunTexture: {fileID: 0}
-  sunColor: {r: 0.9925499, g: 0.9802569, b: 0.9599734, a: 0}
+  sunColor: {r: 0.9716981, g: 0.92380583, b: 0.84407306, a: 1}
   sunSize: 0.07
   sunSoftEdge: 0.5
   sunGlow: 0.45
   useBakedSun: 0
   sunCubemap: {fileID: 0}
   sunLightColor: {r: 1, g: 0.9929226, b: 0.9009434, a: 1}
-  sunLightIntensity: 0.00023975346
+  sunLightIntensity: 0.7942049
   enableMoon: 1
   moonTexture: {fileID: 0}
-  moonColor: {r: 1, g: 1, b: 1, a: 1}
+  moonColor: {r: 1, g: 1, b: 1, a: 0}
   moonSize: 0
   moonSoftEdge: 0
   moonGlow: 0
   useBakedMoon: 0
   moonCubemap: {fileID: 0}
   moonLightColor: {r: 0, g: 0, b: 0, a: 0}
-  moonLightIntensity: 0.12106855
+  moonLightIntensity: 0.00008134639
   customCloudTexture: {fileID: 0}
   enableHorizonCloud: 0
   horizonCloudColor: {r: 1, g: 1, b: 1, a: 1}
@@ -173,7 +173,7 @@ MonoBehaviour:
   horizonCloudStep: 25
   horizonCloudAnimationSpeed: 50
   enableOverheadCloud: 1
-  overheadCloudColor: {r: 1, g: 1, b: 1, a: 0.1446197}
+  overheadCloudColor: {r: 1, g: 1, b: 1, a: 0.40195584}
   overheadCloudAltitude: 1000
   overheadCloudSize: 10
   overheadCloudStep: 2

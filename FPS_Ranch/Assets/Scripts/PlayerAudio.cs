@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    private PlayerController _controller;
+    private PlayerCharacterController _characterController;
     private AudioSource _audioSource;
     public float footstepSFXFrequency = 1f;
     public float sFXFrequencySprint = 1f;
